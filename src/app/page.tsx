@@ -14,53 +14,63 @@ export default function Home() {
       />
       <main className={styles.main}>
         <div className={styles.content}>
-          <h1 className={styles.nameText1}>Sanyam Jain</h1>
-          <h1 className={styles.nameText2}>サニヤム・ジャイナ語</h1>
+          <div className={styles.textBackground}></div>
+          <h1 className={styles.breakoutHello}>Hello,</h1>
+          <h1 className={styles.nameText1}>I'm Sanyam Jain!</h1>
+          <h1 className={styles.nameText2}>サニヤム・ジャイナ語!</h1>
+          <p className={styles.nameText3}>
+            I'm a Self-taught App Developer based in Delhi with extensive experience in building high-quality mobile applications. I'm currently living in New Delhi and pursuing a degree in Information Technology.
+          </p>
         </div>
-        
+        {/* <Image
+        className={styles.mypic}
+        src="/Subject.png"
+        alt="Profile picture"
+        width={100}
+        height={100}
+        priority
+      /> */}
+      </main>
+      <main className={styles.main2}>
+        <div className={styles.content}>
+          <div className={styles.textBackground}></div>
+          <h1 className={styles.sectionTitle}>Education</h1>
+          <div className={styles.educationItem}>
+            <h2 className={styles.schoolName}>WIT, Solapur</h2>
+            <p className={styles.degree}>Bachelor of Technology - Information Technology</p>
+            <p className={styles.duration}>2021 - 2025</p>
+            <p className={styles.gpa}>CGPA: 9.1/10</p>
+          </div>
+          <div className={styles.educationItem}>
+            <h2 className={styles.schoolName}>Guru nanak dev institute of technology</h2>
+            <p className={styles.degree}>Diploma</p>
+            <p className={styles.duration}>2018 - 2021</p>
+            <p className={styles.gpa}>Percentage: 78%</p>
+          </div>
+        </div>
       </main>
       <footer className={styles.footer}>
         <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        href="https://www.linkedin.com/in/jainsanyamit"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+          Linkedin
         </a>
         <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
+          
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
+          Github
         </a>
         <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+          Leetcode
         </a>
       </footer>
     </div>
