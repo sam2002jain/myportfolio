@@ -38,7 +38,7 @@
   gap: 1rem;
   padding: 2rem;
   align-items: flex-start;
-  margin-left: 5%;
+  margin-left: 16%;
 }
 
 .breakoutHello {
@@ -110,7 +110,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 500;
   height: 100%;
   background-color: #e7ba80;
   opacity: 0.95; /* Slightly more solid background */
@@ -165,6 +165,36 @@
   margin-bottom: 1rem;
 }
 
+.experienceContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  z-index: 2;
+
+}
+.experienceItem{
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.techStack{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  z-index: 2;
+  margin-Top:10;
+}
+
+.techBadge{
+  padding: 0.3rem 1.2rem;
+  background: rgb(26, 56, 155);
+  color: white;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  z-index: 2;
+  width: auto;
+  fill: transparent;
+}
 .sectionTitle {
   font-family: 'Bangers', cursive;
   font-size: 3rem;
@@ -179,23 +209,28 @@
   z-index: 2;
 }
 
-.schoolName {
+.companyname {
   font-size: 1.5rem;
   color: rgb(26, 56, 155);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
-.degree {
+.designation {
   font-size: 1.1rem;
   color: rgb(26, 56, 155);
   margin-bottom: 0.3rem;
 }
 
-.duration, .gpa {
+.duration, .desc {
   font-size: 1rem;
   color: rgb(26, 56, 155);
   margin-bottom: 0.2rem;
+}
+.mypic{
+  border-radius: 150px;
+  margin-right: 28rem;
+  z-index: 10;
 }
 
 @media (max-width: 768px) {
@@ -212,4 +247,8 @@
   .nameText {
     font-size: 2.5rem;
   }
+  .textBackground{
+    display:contents;
+  }
+
 }
