@@ -1,7 +1,42 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
     <div className={styles.page}>
       <Image
@@ -33,15 +68,31 @@ export default function Home() {
       </main>
       <main className={styles.main2}>
         <div className={styles.experienceContainer}>
-          <div className={styles.experienceImage}>
-            <Image
-              src="/img1.jpg" // Replace with your actual image
-              alt="Experience illustration"
-              width={500}
-              height={500}
-              className={styles.expImage}
-              priority
-            />
+          <div className={styles.animatedBackground}>
+            <div className={styles.animatedCircle}></div>
+            <div className={styles.animatedSquare}></div>
+            <div className={styles.animatedDots}></div>
+          </div>
+          <div className={styles.tiltCard} ref={cardRef}>
+            <div className={styles.cardContent}>
+              <div className={styles.cardIcon}>💻</div>
+              <h3>Development Journey</h3>
+              <p>From self-taught beginnings to professional development</p>
+              <div className={styles.cardStats}>
+                <div className={styles.stat}>
+                  <span>2+</span>
+                  <p>Years Coding</p>
+                </div>
+                <div className={styles.stat}>
+                  <span>15+</span>
+                  <p>Projects</p>
+                </div>
+                <div className={styles.stat}>
+                  <span>3</span>
+                  <p>Languages</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.content}>
             <div className={styles.textBackground}></div>
