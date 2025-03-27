@@ -25,7 +25,7 @@ const playfair = Playfair_Display({
 })
 
 const bangers = Bangers({
-  display: 'auto',
+  subsets: ['latin'],
   weight: "400"
 })
 
