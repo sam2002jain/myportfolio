@@ -2,9 +2,29 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect, useRef } from "react";
+import FloatingIcons from "@/components/FloatingIcons";
 
 export default function Home() {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.visible);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(`.${styles.experienceItem}`).forEach((item) => {
+      observer.observe(item);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -39,6 +59,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <FloatingIcons />
       <Image
         className={styles.logo}
         src="/img1.jpg"
@@ -68,11 +89,6 @@ export default function Home() {
       </main>
       <main className={styles.main2}>
         <div className={styles.experienceContainer}>
-          <div className={styles.animatedBackground}>
-            <div className={styles.animatedCircle}></div>
-            <div className={styles.animatedSquare}></div>
-            <div className={styles.animatedDots}></div>
-          </div>
           <div className={styles.tiltCard} ref={cardRef}>
             <div className={styles.cardContent}>
               <div className={styles.cardIcon}>💻</div>
@@ -84,7 +100,7 @@ export default function Home() {
                   <p>Years Coding</p>
                 </div>
                 <div className={styles.stat}>
-                  <span>15+</span>
+                  <span>6+</span>
                   <p>Projects</p>
                 </div>
                 <div className={styles.stat}>
@@ -94,39 +110,73 @@ export default function Home() {
               </div>
             </div>
           </div>
+          
           <div className={styles.content}>
-            <div className={styles.textBackground}></div>
             <h1 className={styles.sectionTitle}>Experience</h1>
-            <div className={styles.experienceItem}>
-              <h2 className={styles.companyname}>Aureus Web Creation, Gurugram</h2>
-              <p className={styles.designation}>React Native Developer Intern</p>
-              <p className={styles.duration}>Aug, 2024 - Oct, 2024</p>
-              <ul className={styles.experienceList}>
-                <li>Developed and maintained cross-platform mobile applications using React Native</li>
-                <li>Implemented responsive UI designs and custom components</li>
-                <li>Integrated RESTful APIs and managed state using Redux</li>
-                <li>Collaborated with design and backend teams for feature implementation</li>
-              </ul>
-              <div className={styles.techStack}>
-                <span className={styles.techBadge}>React Native</span>
-                <span className={styles.techBadge}>TypeScript</span>
-                <span className={styles.techBadge}>Redux</span>
-                <span className={styles.techBadge}>REST APIs</span>
+            <div className={styles.experienceContent}>
+              <div className={styles.experienceItem}>
+                <h2 className={styles.companyname}>Aureus Web Creation, Gurugram</h2>
+                <p className={styles.designation}>React Native Developer Intern</p>
+                <p className={styles.duration}>Aug, 2024 - Oct, 2024</p>
+                <ul className={styles.experienceList}>
+                  <li>Developed and maintained cross-platform mobile applications using React Native</li>
+                  <li>Implemented responsive UI designs and custom components</li>
+                  <li>Integrated RESTful APIs and managed state using Redux</li>
+                  <li>Collaborated with design and backend teams for feature implementation</li>
+                </ul>
+                <div className={styles.techStack}>
+                  <div className={styles.techBadgesRow}>
+                    <span className={styles.techBadge}>React Native</span>
+                    <span className={styles.techBadge}>TypeScript</span>
+                    <span className={styles.techBadge}>Node.JS</span>
+                    <span className={styles.techBadge}>REST APIs</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className={styles.experienceItem}>
-              <h2 className={styles.companyname}>Freelance Projects</h2>
-              <p className={styles.designation}>Mobile App Developer</p>
-              <p className={styles.duration}>2023 - Present</p>
-              <ul className={styles.experienceList}>
-                <li>Built custom mobile applications for various clients</li>
-                <li>Managed entire development lifecycle from design to deployment</li>
-                <li>Implemented complex features and optimized performance</li>
-              </ul>
-              <div className={styles.techStack}>
-                <span className={styles.techBadge}>Flutter</span>
-                <span className={styles.techBadge}>Firebase</span>
-                <span className={styles.techBadge}>Node.js</span>
+              <div className={styles.experienceItem}>
+                <h2 className={styles.companyname}>Freelance Projects</h2>
+                <p className={styles.designation}>Mobile App Developer</p>
+                <p className={styles.duration}>Feb,2025 - April, 2025</p>
+                <ul className={styles.experienceList}>
+                  <li>Built custom mobile applications for various clients</li>
+                  <li>Managed entire development lifecycle from design to deployment</li>
+                  <li>Implemented complex features and optimized performance</li>
+                </ul>
+                <div className={styles.techStack}>
+                  <span className={styles.techBadge}>Android</span>
+                  <span className={styles.techBadge}>Firebase</span>
+                  <span className={styles.techBadge}>Clerk Auth</span>
+                </div>
+              </div>
+              <div className={styles.experienceItem}>
+                <h2 className={styles.companyname}>Valanceware Technology</h2>
+                <p className={styles.designation}>Mobile App Developer</p>
+                <p className={styles.duration}>Jan 2025 - March 2025</p>
+                <ul className={styles.experienceList}>
+                  <li>Led frontend of a sweets delivery app with React Native, firebase</li>
+                  <li>Implemented real-time chat and push notifications</li>
+                  <li>Reduced app load time by 30% through optimization</li>
+                </ul>
+                <div className={styles.techStack}>
+                  <span className={styles.techBadge}>React Native</span>
+                  <span className={styles.techBadge}>Firebase</span>
+                  <span className={styles.techBadge}>ContextApi</span>
+                </div>
+              </div>
+              <div className={styles.experienceItem}>
+                <h2 className={styles.companyname}>RapportSoft Technology</h2>
+                <p className={styles.designation}>Software Developer Intern</p>
+                <p className={styles.duration}>Feb 2024 - May 2024</p>
+                <ul className={styles.experienceList}>
+                  <li>Developed Responsive Mobile and web application using react native Expo</li>
+                  <li>Created reliable Auth and Api</li>
+                  <li>Integrated OCR and SMTP</li>
+                </ul>
+                <div className={styles.techStack}>
+                  <span className={styles.techBadge}>React Native</span>
+                  <span className={styles.techBadge}>SpringBoot</span>
+                  <span className={styles.techBadge}>MySql</span>
+                </div>
               </div>
             </div>
           </div>
