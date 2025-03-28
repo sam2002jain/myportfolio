@@ -1,13 +1,56 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { useEffect, useRef } from "react";
+import { JSX, useEffect, useRef, useState } from "react";
 import FloatingIcons from "@/components/FloatingIcons";
 import Navbar from "@/components/navbar";
 
 
 export default function Home() {
   const cardRef = useRef<HTMLDivElement>(null);
+  const[selected, setSelected] = useState<string | null>(null);
+  const [particles, setParticles] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    // Create Particle Animation
+    const generateParticles = () => {
+      const particlesArray = Array.from({ length: 20 }).map((_, index) => {
+        const size = Math.random() * 20 + 5;
+        const left = Math.random() * 100;
+        const animationDuration = Math.random() * 10 + 5;
+        const delay = Math.random() * 5;
+
+        return (
+          <div 
+            key={index} 
+            className={styles.particle}
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              left: `${left}%`,
+              top: `${Math.random() * 100}%`,
+              animationDuration: `${animationDuration}s`,
+              animationDelay: `${delay}s`
+            }}
+          />
+        );
+      });
+
+      setParticles(particlesArray);
+    };
+
+    generateParticles();
+  }, []);
+
+
+  const handleProjectClick = (projectName: string) => {
+    setSelected(projectName);
+  };
+
+  const handleCloseModal = () => {
+    setSelected(null);
+  };
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,6 +104,10 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.creativeParticles}>
+        {particles}
+      </div>
+
       <Navbar />
       <FloatingIcons />
       <Image
@@ -185,8 +232,106 @@ export default function Home() {
           </div>
         </div>
       </main>
-      
-      
+      <main className={styles.projectsSection}>
+        <h1 className={styles.sectionTitle}>Projects</h1>
+        <div className={styles.projectsContainer}>
+          <div className={styles.projectCard}>
+            <div className={styles.projectIcon}>🚀</div>
+            <h3>E-Commerce App</h3>
+            <p>A full-stack e-commerce mobile application with React Native and Firebase</p>
+            <div className={styles.projectTech}>
+              <span className={styles.techBadge}>React Native</span>
+              <span className={styles.techBadge}>Firebase</span>
+              <span className={styles.techBadge}>Redux</span>
+            </div>
+            <a onClick={() => handleProjectClick('E-Commerce App')} className={styles.projectLink}>
+              View Project →
+            </a>
+          </div>
+
+          <div className={styles.projectCard}>
+            <div className={styles.projectIcon}>💬</div>
+            <h3>Chat Application</h3>
+            <p>Real-time chat app with message encryption and file sharing capabilities</p>
+            <div className={styles.projectTech}>
+              <span className={styles.techBadge}>Socket.io</span>
+              <span className={styles.techBadge}>Node.js</span>
+              <span className={styles.techBadge}>MongoDB</span>
+            </div>
+            <a onClick={() => handleProjectClick('Chat Application')} className={styles.projectLink}>
+              View Project →
+            </a>
+          </div>
+
+          <div className={styles.projectCard}>
+            <div className={styles.projectIcon}>🎯</div>
+            <h3>Task Manager</h3>
+            <p>A productive task management app with calendar integration</p>
+            <div className={styles.projectTech}>
+              <span className={styles.techBadge}>React Native</span>
+              <span className={styles.techBadge}>TypeScript</span>
+              <span className={styles.techBadge}>SQLite</span>
+            </div>
+            <a onClick={() => handleProjectClick('Task Manager')} className={styles.projectLink}>
+              View Project →
+            </a>
+          </div>
+        </div>
+      </main>
+
+      {selected && (
+        <div className={styles.overlay} onClick={handleCloseModal}>
+          <div 
+            className={styles.overlayContent} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={handleCloseModal} 
+              className={styles.closeButton}
+            >
+              ✕
+            </button>
+            <h2>Project: {selected}</h2>
+            {selected === 'E-Commerce App' && (
+              <div>
+                <p>A comprehensive e-commerce mobile application built with React Native and Firebase.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                  <li>User authentication</li>
+                  <li>Product browsing and search</li>
+                  <li>Shopping cart functionality</li>
+                  <li>Payment integration</li>
+                </ul>
+              </div>
+            )}
+            {selected === 'Chat Application' && (
+              <div>
+                <p>A secure real-time chat application with advanced features.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                  <li>End-to-end encryption</li>
+                  <li>File sharing</li>
+                  <li>Real-time messaging</li>
+                  <li>User authentication</li>
+                </ul>
+              </div>
+            )}
+            {selected === 'Task Manager' && (
+              <div>
+                <p>A productivity-focused task management application.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                  <li>Calendar integration</li>
+                  <li>Task creation and tracking</li>
+                  <li>Priority setting</li>
+                  <li>Reminders and notifications</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <footer className={styles.footer}>
         <a
         href="https://www.linkedin.com/in/jainsanyamit"
