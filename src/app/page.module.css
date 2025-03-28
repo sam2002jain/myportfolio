@@ -121,6 +121,19 @@
 }
 
 /* Remove br tags handling */
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  color:#3764e1;
+  filter: blur(5px);
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
 
 .logo {
   position: absolute;
@@ -233,7 +246,7 @@
 .sectionTitle {
   font-family: 'Bangers', cursive;
   font-size: 2.5rem;
-  color: rgb(55, 100, 225);
+  color: #3764e1;
   margin-bottom: 1rem;
   letter-spacing: 2px;
   z-index: 2;

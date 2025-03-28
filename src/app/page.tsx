@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect, useRef } from "react";
 import FloatingIcons from "@/components/FloatingIcons";
+import Navbar from "@/components/navbar";
+
 
 export default function Home() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -59,13 +61,14 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <Navbar />
       <FloatingIcons />
       <Image
-        className={styles.logo}
+        className={styles.heroImage}
         src="/img1.jpg"
         alt="Profile picture"
-        width={1000}
-        height={1000}
+        layout="fill"
+        objectFit="cover"
         priority
       />
       <main className={styles.main}>
