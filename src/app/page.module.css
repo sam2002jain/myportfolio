@@ -112,12 +112,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 500;
+  width: 500px;  /* Add 'px' unit */
   height: 100%;
-  background-color: #e7ba80;
-  opacity: 0.95; /* Slightly more solid background */
+  background-color: rgba(231, 186, 128, 0.95);  /* Use rgba for better color control */
   z-index: 1;
   border-radius: 10px;
+  backdrop-filter: blur(5px);  /* Add blur effect for better visibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Add subtle shadow */
 }
 
 /* Remove br tags handling */
