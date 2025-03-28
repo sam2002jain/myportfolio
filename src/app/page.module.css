@@ -123,17 +123,16 @@
 
 /* Remove br tags handling */
 .heroImage {
-  position: absolute;
+  position: fixed;  /* Change from absolute to fixed */
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 1;
-  color:#3764e1;
-  filter: blur(5px);
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
+  opacity: 0.3;  /* Increase opacity slightly */
+  filter: blur(3px);  /* Reduce blur */
+  pointer-events: none;  /* Prevent image from interfering with interactions */
 }
 
 .logo {
