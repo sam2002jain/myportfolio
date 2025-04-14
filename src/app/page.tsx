@@ -237,42 +237,43 @@ export default function Home() {
         <div className={styles.projectsContainer}>
           <div className={styles.projectCard}>
             <div className={styles.projectIcon}>🚀</div>
-            <h3>E-Commerce App</h3>
-            <p>A full-stack e-commerce mobile application with React Native and Firebase</p>
+            <h3>Adalat</h3>
+            <p>A full-stack Lawyer's mobile application with React Native and MongoDB</p>
             <div className={styles.projectTech}>
               <span className={styles.techBadge}>React Native</span>
-              <span className={styles.techBadge}>Firebase</span>
-              <span className={styles.techBadge}>Redux</span>
+              <span className={styles.techBadge}>MongoDB</span>
+              <span className={styles.techBadge}>NodeJS</span>
+              <span className={styles.techBadge}>Axios</span>
             </div>
-            <a onClick={() => handleProjectClick('E-Commerce App')} className={styles.projectLink}>
+            <a onClick={() => handleProjectClick('Adalat')} className={styles.projectLink}>
               View Project →
             </a>
           </div>
 
           <div className={styles.projectCard}>
             <div className={styles.projectIcon}>💬</div>
-            <h3>Chat Application</h3>
-            <p>Real-time chat app with message encryption and file sharing capabilities</p>
+            <h3>NextEvent</h3>
+            <p>Wedding halls and Banquet Halls Management Application for authorities</p>
             <div className={styles.projectTech}>
-              <span className={styles.techBadge}>Socket.io</span>
-              <span className={styles.techBadge}>Node.js</span>
-              <span className={styles.techBadge}>MongoDB</span>
+              <span className={styles.techBadge}>React Native</span>
+              <span className={styles.techBadge}>ContextApi</span>
+              <span className={styles.techBadge}>Expo</span>
             </div>
-            <a onClick={() => handleProjectClick('Chat Application')} className={styles.projectLink}>
+            <a onClick={() => handleProjectClick('NextEvent')} className={styles.projectLink}>
               View Project →
             </a>
           </div>
 
           <div className={styles.projectCard}>
             <div className={styles.projectIcon}>🎯</div>
-            <h3>Task Manager</h3>
-            <p>A productive task management app with calendar integration</p>
+            <h3>Seabird</h3>
+            <p>A productive container tracking app for CFS station Managers</p>
             <div className={styles.projectTech}>
               <span className={styles.techBadge}>React Native</span>
-              <span className={styles.techBadge}>TypeScript</span>
-              <span className={styles.techBadge}>SQLite</span>
+              <span className={styles.techBadge}>SpringBoot</span>
+              <span className={styles.techBadge}>MySql</span>
             </div>
-            <a onClick={() => handleProjectClick('Task Manager')} className={styles.projectLink}>
+            <a onClick={() => handleProjectClick('Saebird')} className={styles.projectLink}>
               View Project →
             </a>
           </div>
@@ -292,40 +293,44 @@ export default function Home() {
               ✕
             </button>
             <h2>Project: {selected}</h2>
-            {selected === 'E-Commerce App' && (
+            {selected === 'Adalat' && (
               <div>
-                <p>A comprehensive e-commerce mobile application built with React Native and Firebase.</p>
+                <p>A comprehensive Lawyer's mobile application built with React Native and MongoDB.</p>
                 <h3>Key Features:</h3>
                 <ul>
                   <li>User authentication</li>
-                  <li>Product browsing and search</li>
-                  <li>Shopping cart functionality</li>
-                  <li>Payment integration</li>
+                  <li>Case Add</li>
+                  <li>Audio Recording functionality</li>
+                  <li>Document scanning and saving</li>
+                  
                 </ul>
+                <a>Github</a>
               </div>
             )}
-            {selected === 'Chat Application' && (
+            {selected === 'NextEvent' && (
               <div>
-                <p>A secure real-time chat application with advanced features.</p>
+                <p>Booking Event Venues according to muhurat and calender.</p>
                 <h3>Key Features:</h3>
                 <ul>
-                  <li>End-to-end encryption</li>
-                  <li>File sharing</li>
-                  <li>Real-time messaging</li>
-                  <li>User authentication</li>
+                  <li>Muhuratam Calender</li>
+                  <li>Easily see Booked and Available Halls</li>
+                  <li>Partial Payment or Full Payment</li>
+                  
                 </ul>
+                <a>Github</a>
               </div>
             )}
-            {selected === 'Task Manager' && (
+            {selected === 'Saebird' && (
               <div>
-                <p>A productivity-focused task management application.</p>
+                <p>To get Tracking of Shipment Container and estimated delivery</p>
                 <h3>Key Features:</h3>
                 <ul>
-                  <li>Calendar integration</li>
-                  <li>Task creation and tracking</li>
-                  <li>Priority setting</li>
-                  <li>Reminders and notifications</li>
+                  <li>Estimated Delivery</li>
+                  <li>OCR functionality</li>
+                  <li>SMTP functionality</li>
+                  <li>Real time update of shipment</li>
                 </ul>
+                <a>Github</a>
               </div>
             )}
           </div>
