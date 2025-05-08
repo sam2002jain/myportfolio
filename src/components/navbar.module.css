@@ -1,53 +1,114 @@
 .navbar {
   width: 100%;
-  background: rgba(26, 86, 226, 0.9); /* Blue gradient with slight opacity */
+  background: linear-gradient(135deg, #1a56e2, #3a7bd5); 
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1000;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navContainer {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .navLogo {
-  color: white;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
 }
 
 .navLinks {
   display: flex;
-  gap: 1.5rem;
   list-style: none;
+  gap: 2rem;
 }
 
 .navLinks li a {
-  color: white;
+  color: #ffffff;
   font-size: 1rem;
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
+  position: relative;
+  transition: color 0.3s;
 }
 
-.navLinks li a:hover {
-  color: #e7ba80;
+.navLinks li a::after {
+  content: "";
+  height: 2px;
+  width: 0;
+  background: #e7ba80;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s ease;
+}
+
+.navLinks li a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  height: 24px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 28px;
+  background: #ffffff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 @media (max-width: 768px) {
-  .navContainer {
-    flex-direction: column;
-    align-items: center;
+  .hamburger {
+    display: flex;
   }
+
   .navLinks {
-    margin-top: 0.5rem;
     flex-direction: column;
-    gap: 0.8rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: rgba(26, 86, 226, 0.95);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .navLinks.active {
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navLinks li {
+    padding: 1rem;
+    text-align: center;
   }
 }
