@@ -1,13 +1,20 @@
 "use client";
 import styles from "./navbar.module.css";
-import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <nav className={styles.navbar}>
@@ -24,13 +31,18 @@ export default function Navbar() {
         </div>
 
         <ul className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
-          {["Home", "About", "Projects", "Contact Me"].map((item) => (
-            <li key={item} onClick={closeMenu}>
-              <Link href={item === "Home" ? "/" : `#${item.toLowerCase().replace(" ", "")}`}>
-                {item}
-              </Link>
-            </li>
-          ))}
+          <li onClick={closeMenu}>
+            <a href="#home">Home</a>
+          </li>
+          <li onClick={closeMenu}>
+            <a href="#about">About</a>
+          </li>
+          <li onClick={closeMenu}>
+            <a href="#projects">Projects</a>
+          </li>
+          <li onClick={closeMenu}>
+            <a href="#contactme">Contact Me</a>
+          </li>
         </ul>
       </div>
     </nav>

@@ -113,9 +113,9 @@ export default function Home() {
           {particles}
         </div>
 
-        <Navbar />
+        <Navbar  />
         <FloatingIcons />
-        <Image
+        <Image id="#home"
           className={styles.heroImage}
           src="/img1.jpg"
           alt="Profile picture"
@@ -123,7 +123,7 @@ export default function Home() {
           objectFit="cover"
           priority
         />
-        <main id="About" className={styles.main}>
+        <main id="about" className={styles.main}>
           <div className={styles.content}>
             <div className={styles.textBackground}></div>
             <h1 className={styles.breakoutHello}>Hello,</h1>
@@ -237,7 +237,7 @@ export default function Home() {
             </div>
           </div>
         </main>
-        <main id="Projects" className={styles.projectsSection}>
+        <main id="projects" className={styles.projectsSection}>
           <h1 className={styles.sectionTitle}>Projects</h1>
           <div className={styles.projectsContainer}>
             <div className={styles.projectCard}>
@@ -342,7 +342,7 @@ export default function Home() {
           </div>
         )}
 
-        <footer id="Contact Me" className={styles.footer}>
+        <footer id="contactme" className={styles.footer}>
           <a
           href="https://www.linkedin.com/in/jainsanyamit"
             target="_blank"
