@@ -351,7 +351,7 @@ export default function Home() {
             Linkedin
           </a>
           <a
-            href=""
+            href="https://www.github.com/sam2002jain"
             target="_blank"
             rel="noopener noreferrer"
             
@@ -359,7 +359,7 @@ export default function Home() {
             Github
           </a>
           <a
-            href=""
+            href="https://leetcode.com/u/sanyam2002/"
             target="_blank"
             rel="noopener noreferrer"
           >
